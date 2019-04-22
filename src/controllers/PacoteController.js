@@ -29,6 +29,12 @@ class PacoteController {
 
     return res.json(pacote);
   }
+
+  async deletar(req, res) {
+    const pacote = await Pacote.findOne({ codigo: req.params.codigo });
+    await pacote.remove();
+    return res.send();
+  }
 }
 
 module.exports = new PacoteController();
